@@ -31,8 +31,8 @@ Resources:
           DestinationArn: !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:EducativeRestAPI"
           Format: '{ "requestId":"$context.requestId", "ip": "$context.identity.sourceIp", "caller":"$context.identity.caller", "user":"$context.identity.user","requestTime":"$context.requestTime", "httpMethod":"$context.httpMethod","resourcePath":"$context.resourcePath", "status":"$context.status","protocol":"$context.protocol", "responseLength":"$context.responseLength" }'
         LoggingLevel: INFO
-        ThrottlingBurstLimit: 1
-        ThrottlingRateLimit: 1
+        DataTraceEnabled: true
+        MetricsEnabled: true
   RestAPI:
     Type: AWS::ApiGateway::RestApi
     Properties:
